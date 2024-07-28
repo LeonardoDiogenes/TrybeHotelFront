@@ -1,0 +1,72 @@
+.filtersLabel {
+  display: flex;
+  align-items: center;
+  gap: 1em;
+  justify-content: center;
+}
+
+.filters {
+  display: flex;
+  justify-content: center;
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 5vh;
+  margin-bottom: 5em;
+}
+
+.background {
+  display: flex;
+  gap: 3em;
+}
+
+.filter {
+  display: flex;
+  flex-direction: column;
+}
+
+.filters input {
+  width: 100%;
+  padding: 1rem;
+  border: 2px solid #ccc;
+  border-radius: 5px;
+  font-size: 1rem;
+  font-family: 'Arial', sans-serif;
+  transition: border-color 0.3s;
+}
+
+.filters input:focus {
+  border-color: #007bff;
+  outline: none;
+}
+
+.filters input::placeholder {
+  color: #888;
+  font-style: italic;
+}
+
+.filtersLabel button {
+  padding: 1rem;
+  border: 2px solid #4CAF50;
+  border-radius: 5px;
+  font-size: 1rem;
+  font-family: 'Arial', sans-serif;
+  font-weight: 600;
+  color: #000000;
+  background-color: #4CAF50;
+  cursor: pointer;
+  transition: background-color 0.3s, border-color 0.3s;
+}
+
+.filtersLabel button:hover {
+  background-color: #45a049;
+  border-color: #45a049;
+}
+
+.filtersLabel button:focus {
+  outline: none;
+  background-color: #45a049;
+  border-color: #45a049;
+}

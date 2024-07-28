@@ -1,0 +1,29 @@
+.wrapper {
+  margin-left: 1em;
+  margin-bottom: 15em;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.wrapper h1 {
+  margin-bottom: 1em;
+  font-size: 1.5em;
+}
+
+.list {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  gap: 1em;
+}
+
+.list li {
+  flex: 1 1 calc(25% - 1em);
+  list-style: none;
+  padding: 2em;
+  background: #f0f0f0;
+  margin-bottom: 1em;
+  text-align: center;
+  border: 1px solid #ccc;
+}
