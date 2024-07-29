@@ -5,7 +5,9 @@ const UserContext = createContext<UserContextType>({
   user: null,
   setUser: () => {},
   showLogin: false,
-  setShowLogin: () => {}
+  setShowLogin: () => {},
+  showSignUp: false,
+  setShowSignUp: () => {},
 });
 
 

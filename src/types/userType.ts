@@ -9,4 +9,6 @@ export type UserContextType = {
   setUser: (user: any) => void;
   showLogin: boolean;
   setShowLogin: (show: boolean) => void;
+  showSignUp: boolean;
+  setShowSignUp: (show: boolean) => void;
 };

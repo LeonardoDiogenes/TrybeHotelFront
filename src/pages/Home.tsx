@@ -6,16 +6,19 @@ import Footer from "../components/Footer";
 import LoginForm from "../components/LoginForm";
 import styles from '../css/Home.module.css';
 import UserContext from '../context/UserContext';
+import SignUpForm from '../components/SignUpForm';
 
 
 function Home() {
-  const { showLogin } = useContext(UserContext);
+  const { showLogin, showSignUp } = useContext(UserContext);
   
   return (
     <div className={styles.wrapper}>
       <Header />
       {showLogin ? (
         <LoginForm />
+      ) : showSignUp ? (
+        <SignUpForm />
       ) : (
         <>
           <Filters />

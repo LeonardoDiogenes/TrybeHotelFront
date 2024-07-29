@@ -3,14 +3,21 @@ import UserContext from '../context/UserContext';
 import styles from '../css/Header.module.css';
 
 function Header() {
-  const { setShowLogin } = useContext(UserContext);
+  const { setShowLogin, setShowSignUp } = useContext(UserContext);
 
   const handleLoginClick = () => {
     setShowLogin(true);
+    setShowSignUp(false);
+  };
+
+  const handleSignUpClick = () => {
+    setShowSignUp(true);
+    setShowLogin(false);
   };
 
   const handleHomeClick = () => {
     setShowLogin(false);
+    setShowSignUp(false);
   }
   
   return (
@@ -28,7 +35,7 @@ function Header() {
       </nav>
       <div className={styles.buttons}>
         <button onClick={handleLoginClick}>Login</button>
-        <button>Registrar</button>
+        <button onClick={handleSignUpClick}>Sign up</button>
       </div>
     </header>
   )
