@@ -23,8 +23,8 @@ function Header() {
   return (
     <header className={styles.header}>
       <div className = {styles.title}>
-        <img src="../../imgs/trybe_logo.png" alt="Logo Trybe" />
-        <h1>TrybeHotel</h1>
+        <img onClick={handleHomeClick} src="../../imgs/trybe_logo.png" alt="Logo Trybe" />
+        <h1 onClick={handleHomeClick}>TrybeHotel</h1>
       </div>
       <nav>
         <ul>

@@ -1,4 +1,5 @@
 import { useContext } from 'react';
+import { CSSTransition, TransitionGroup } from 'react-transition-group';
 import Header from "../components/Header";
 import Filters from "../components/Filters";
 import Grid from "../components/Grid";
@@ -15,19 +16,54 @@ function Home() {
   return (
     <div className={styles.wrapper}>
       <Header />
-      {showLogin ? (
-        <LoginForm />
-      ) : showSignUp ? (
-        <SignUpForm />
-      ) : (
-        <>
-          <Filters />
-          <Grid />
-        </>
-      )}
+      <TransitionGroup>
+        {showLogin ? (
+          <CSSTransition
+            key="login"
+            timeout={500}
+            classNames={{
+              enter: styles['fade-enter'],
+              enterActive: styles['fade-enter-active'],
+              exit: styles['fade-exit'],
+              exitActive: styles['fade-exit-active']
+            }}
+          >
+            <LoginForm />
+          </CSSTransition>
+        ) : showSignUp ? (
+          <CSSTransition
+            key="signup"
+            timeout={500}
+            classNames={{
+              enter: styles['fade-enter'],
+              enterActive: styles['fade-enter-active'],
+              exit: styles['fade-exit'],
+              exitActive: styles['fade-exit-active']
+            }}
+          >
+            <SignUpForm />
+          </CSSTransition>
+        ) : (
+          <CSSTransition
+            key="main"
+            timeout={500}
+            classNames={{
+              enter: styles['fade-enter'],
+              enterActive: styles['fade-enter-active'],
+              exit: styles['fade-exit'],
+              exitActive: styles['fade-exit-active']
+            }}
+          >
+            <>
+              <Filters />
+              <Grid />
+            </>
+          </CSSTransition>
+        )}
+      </TransitionGroup>
       <Footer />
     </div>
-  )
+  );
 }
 
 export default Home;

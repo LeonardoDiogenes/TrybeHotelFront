@@ -32,6 +32,10 @@
   max-width: 5em;
 }
 
+.title h1, .title img {
+  cursor: pointer;
+}
+
 .buttons {
   display: flex;
   gap: 3em;
