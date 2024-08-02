@@ -1,11 +1,12 @@
 import styles from '../css/Card.module.css';
+import { Hotel } from '../types/hotelType';
 
-function Card() {
+const Card: React.FC<{ hotel: Hotel }> = ({ hotel }) => {
   return (
     <li className={styles.wrapper}>
-      <img src="" alt="" />
-      <h2>Nome do hotel</h2>
-      <p>Endereço do hotel</p>
+      <img src={hotel.image} alt="Imagem do hotel" />
+      <h2>{hotel.name}</h2>
+      <p>{hotel.address}</p>
     </li>
   )
 }

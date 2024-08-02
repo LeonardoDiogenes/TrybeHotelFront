@@ -12,18 +12,16 @@
 }
 
 .list {
-  display: flex;
-  justify-content: space-around;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(20%, 1fr));
   gap: 1em;
+  width: 100%;
 }
 
+
 .list li {
-  flex: 1 1 calc(25% - 1em);
   list-style: none;
-  padding: 2em;
   background: #f0f0f0;
-  margin-bottom: 1em;
+  border: black 1px solid;
   text-align: center;
-  border: 1px solid #ccc;
 }

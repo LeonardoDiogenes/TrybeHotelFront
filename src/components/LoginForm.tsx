@@ -1,13 +1,46 @@
+import { ChangeEvent, FormEvent, useContext, useState } from 'react';
 import styles from '../css/LoginForm.module.css';
+import UserContext from '../context/UserContext';
+import { login } from '../async/asyncFuncs'
 
 function LoginForm() {
+  const { setUser, setShowLogin } = useContext(UserContext);
+  const [formData, setFormData] = useState({
+    email: '',
+    password: ''
+  });
+
+  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = e.target;
+    if (name) {
+      setFormData((prevData) => ({
+        ...prevData,
+        [name]: value
+      }));
+    }
+  };
+
+  const handleClick = () => {
+    setUser(formData);
+    login(formData.email, formData.password);
+    setShowLogin(false);
+  }
+  
   return (
     <div className={styles.wrapper}>
       <h2>Login</h2>
       <form>
-        <input type="text" placeholder='Username' />
-        <input type="password" placeholder='Password' />
-        <button type="submit">Log in</button>
+        <input onChange={handleChange}
+        type="text"
+        placeholder='Email'
+        name="email"
+        value={formData.email} />
+        <input onChange={handleChange}
+        type="password"
+        placeholder='Password'
+        name="password"
+        value={formData.password} />
+        <button onClick={handleClick} type="submit">Log in</button>
       </form>
     </div>
   );

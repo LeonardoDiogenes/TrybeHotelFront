@@ -7,11 +7,12 @@ import { UserContextType } from './types/userType';
 
 function App() {
   const [user, setUser] = useState<UserContextType["user"]>(null);
+  const [newUser, setNewUser] = useState<UserContextType["newUser"]>(null);
   const [showLogin, setShowLogin] = useState(false);
   const [showSignUp, setShowSignUp] = useState(false);
 
   return (
-    <UserContext.Provider value={{user, setUser, showLogin, setShowLogin, showSignUp, setShowSignUp }}>
+    <UserContext.Provider value={{user, setUser, newUser, setNewUser, showLogin, setShowLogin, showSignUp, setShowSignUp }}>
       <div className={styles.rootcss}>
         <Routes>
           <Route path="/" element={ <Home /> } />

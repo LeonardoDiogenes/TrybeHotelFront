@@ -3,7 +3,7 @@ import UserContext from '../context/UserContext';
 import styles from '../css/SignUpForm.module.css';
 
 function SignUpForm() {
-  const { setUser } = useContext(UserContext);
+  const { setNewUser } = useContext(UserContext);
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -26,7 +26,7 @@ function SignUpForm() {
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (formData.password === formData.confirmPassword) {
-      setUser({
+      setNewUser({
         id: Date.now(),
         name: formData.name,
         email: formData.email,
