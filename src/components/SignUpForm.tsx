@@ -1,15 +1,24 @@
 import { ChangeEvent, FormEvent, useContext, useState } from 'react';
-import UserContext from '../context/UserContext';
 import styles from '../css/SignUpForm.module.css';
+import { signUp } from '../async/asyncFuncs';
+// import { SignUpFormType } from '../types/userType';
+import UserContext from '../context/UserContext';
 
 function SignUpForm() {
-  const { setNewUser } = useContext(UserContext);
+  const { setShowSignUp } = useContext(UserContext);
   const [formData, setFormData] = useState({
     name: '',
     email: '',
     password: '',
     confirmPassword: ''
   });
+
+  // const initialFormData: SignUpFormType = {
+  //   name: '',
+  //   email: '',
+  //   password: '',
+  //   confirmPassword: ''
+  // };
 
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
@@ -23,19 +32,19 @@ function SignUpForm() {
   };
   
 
-  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    if (formData.password === formData.confirmPassword) {
-      setNewUser({
-        id: Date.now(),
-        name: formData.name,
-        email: formData.email,
-        password: formData.password,
-        bookings: []
-      });
-
-    } else {
-      alert('Passwords do not match');
+    try {
+      if (formData.password !== formData.confirmPassword) {
+        alert('Passwords do not match');
+        return;
+      }
+      await signUp(formData.name, formData.email, formData.password);
+      setShowSignUp(false);
+      // setFormData(initialFormData);
+      alert('User created successfully');
+    } catch (error) {
+      console.log(error);
     }
   };
   

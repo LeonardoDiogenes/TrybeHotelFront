@@ -19,3 +19,20 @@ export const login = async (email: string, password: string): Promise<LoginRespo
   console.log(data);
   return data;
 };
+
+export const signUp = async (name: string, email: string, password: string): Promise<void> => {
+  const response = await fetch('https://localhost:5001/user', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({ name, email, password }),
+    });
+
+  if (response.status !== 201) {
+    throw new Error('Falha no cadastro');
+  }
+
+  const data = await response.json();
+  console.log(data);
+};

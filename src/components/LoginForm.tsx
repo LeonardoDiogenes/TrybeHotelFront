@@ -20,16 +20,22 @@ function LoginForm() {
     }
   };
 
-  const handleClick = () => {
-    setUser(formData);
-    login(formData.email, formData.password);
-    setShowLogin(false);
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    try {
+      setUser(formData);
+      await login(formData.email, formData.password);
+      setShowLogin(false);
+      alert('Logged in successfully');
+    } catch (error) {
+      console.log(error);
+    }
   }
   
   return (
     <div className={styles.wrapper}>
       <h2>Login</h2>
-      <form>
+      <form onSubmit={handleSubmit}>
         <input onChange={handleChange}
         type="text"
         placeholder='Email'
@@ -40,7 +46,7 @@ function LoginForm() {
         placeholder='Password'
         name="password"
         value={formData.password} />
-        <button onClick={handleClick} type="submit">Log in</button>
+        <button type="submit">Log in</button>
       </form>
     </div>
   );
