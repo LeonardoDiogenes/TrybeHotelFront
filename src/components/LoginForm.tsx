@@ -2,6 +2,7 @@ import { ChangeEvent, FormEvent, useContext, useState } from 'react';
 import styles from '../css/LoginForm.module.css';
 import UserContext from '../context/UserContext';
 import { login } from '../async/asyncFuncs'
+import Button from '@mui/material/Button';
 
 function LoginForm() {
   const { setUser, setShowLogin } = useContext(UserContext);
@@ -34,7 +35,7 @@ function LoginForm() {
   
   return (
     <div className={styles.wrapper}>
-      <h2>Login</h2>
+      <h2>LOGIN</h2>
       <form onSubmit={handleSubmit}>
         <input onChange={handleChange}
         type="text"
@@ -46,7 +47,11 @@ function LoginForm() {
         placeholder='Password'
         name="password"
         value={formData.password} />
-        <button type="submit">Log in</button>
+        <Button 
+          type="submit"
+          variant="contained">
+          Log in
+        </Button>
       </form>
     </div>
   );

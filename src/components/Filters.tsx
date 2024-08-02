@@ -1,12 +1,33 @@
 import styles from '../css/Filters.module.css';
+import Button from '@mui/material/Button';
 
 function Filters() {
   return (
     <div className={styles.wrapper}>
       <div className={styles.filtersLabel}>
         <h1>Encontrar</h1>
-        <button>Hotéis</button>
-        <button>Quartos</button>
+        <Button 
+        variant="contained"
+        sx={{
+          backgroundColor: '#4CAF50',
+          fontFamily: 'Montserrat',
+          fontWeight: 'bold',
+          color: 'black',
+          '&:hover': {backgroundColor: '#45a049', borderColor: '#0062cc'}
+        }}>
+          Hotéis
+        </Button>
+        <Button
+        variant="contained"
+        sx={{
+          backgroundColor: '#4CAF50',
+          fontFamily: 'Montserrat',
+          fontWeight: 'bold',
+          color: 'black',
+          '&:hover': {backgroundColor: '#45a049', borderColor: '#0062cc'}
+        }}>
+          Quartos
+        </Button>
       </div>
       <form className={styles.filters}>
         <div className={styles.background}>

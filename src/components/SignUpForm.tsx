@@ -1,8 +1,8 @@
 import { ChangeEvent, FormEvent, useContext, useState } from 'react';
 import styles from '../css/SignUpForm.module.css';
 import { signUp } from '../async/asyncFuncs';
-// import { SignUpFormType } from '../types/userType';
 import UserContext from '../context/UserContext';
+import Button from '@mui/material/Button';
 
 function SignUpForm() {
   const { setShowSignUp } = useContext(UserContext);
@@ -12,14 +12,6 @@ function SignUpForm() {
     password: '',
     confirmPassword: ''
   });
-
-  // const initialFormData: SignUpFormType = {
-  //   name: '',
-  //   email: '',
-  //   password: '',
-  //   confirmPassword: ''
-  // };
-
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
@@ -41,7 +33,6 @@ function SignUpForm() {
       }
       await signUp(formData.name, formData.email, formData.password);
       setShowSignUp(false);
-      // setFormData(initialFormData);
       alert('User created successfully');
     } catch (error) {
       console.log(error);
@@ -50,7 +41,7 @@ function SignUpForm() {
   
   return (
     <div className={styles.wrapper}>
-      <h2>Sign Up</h2>
+      <h2>SIGN UP</h2>
       <form onSubmit={handleSubmit}>
         <input type="text"
          placeholder="Name"
@@ -72,7 +63,11 @@ function SignUpForm() {
          placeholder="Confirm Password"
          value={formData.confirmPassword}
          onChange={handleChange} />
-        <button type="submit">Sign Up</button>
+        <Button 
+          type="submit"
+          variant="contained">
+          Sign up
+        </Button>
       </form>
     </div>
   )

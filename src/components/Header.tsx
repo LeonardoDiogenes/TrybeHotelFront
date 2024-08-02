@@ -1,6 +1,7 @@
 import { useContext } from 'react';
 import UserContext from '../context/UserContext';
 import styles from '../css/Header.module.css';
+import Button from '@mui/material/Button';
 
 function Header() {
   const { setShowLogin, setShowSignUp } = useContext(UserContext);
@@ -24,7 +25,7 @@ function Header() {
     <header className={styles.header}>
       <div className = {styles.title}>
         <img onClick={handleHomeClick} src="../../imgs/trybe_logo.png" alt="Logo Trybe" />
-        <h1 onClick={handleHomeClick}>TrybeHotel</h1>
+        <h1 onClick={handleHomeClick}>TrybeHotels</h1>
       </div>
       <nav>
         <ul>
@@ -34,8 +35,30 @@ function Header() {
         </ul>
       </nav>
       <div className={styles.buttons}>
-        <button onClick={handleLoginClick}>Login</button>
-        <button onClick={handleSignUpClick}>Sign up</button>
+        <Button 
+          variant="contained"
+          sx={{
+            backgroundColor: '#4CAF50',
+            fontFamily: 'Montserrat',
+            color: 'black',
+            '&:hover': {backgroundColor: '#45a049', borderColor: '#0062cc'}
+          }}
+          onClick={handleLoginClick}
+        >
+          Login
+        </Button>
+        <Button 
+          variant="contained"
+          sx={{
+            backgroundColor: '#4CAF50',
+            fontFamily: 'Montserrat',
+            color: 'black',
+            '&:hover': {backgroundColor: '#45a049', borderColor: '#0062cc'}
+          }}
+          onClick={handleSignUpClick}
+        >
+          Sign up
+        </Button>
       </div>
     </header>
   )

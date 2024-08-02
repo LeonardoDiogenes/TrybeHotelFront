@@ -9,10 +9,3 @@ export type UserContextType = {
   showSignUp: boolean;
   setShowSignUp: (show: boolean) => void;
 };
-
-export type SignUpFormType = {
-  name: string;
-  email: string;
-  password: string;
-  confirmPassword: string;
-};

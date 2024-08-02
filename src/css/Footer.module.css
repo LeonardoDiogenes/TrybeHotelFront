@@ -1,4 +1,12 @@
 .wrapper {
   display: flex;
   justify-content: center;
+  align-items: center;
+  gap: 1em;
+  margin-right: 1em;
+}
+
+.wrapper a {
+  color: #000;
+  text-decoration: none;
 }
