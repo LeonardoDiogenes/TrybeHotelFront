@@ -29,7 +29,9 @@ function LoginForm() {
       setShowLogin(false);
       alert('Logged in successfully');
     } catch (error) {
+      alert('Failed to log in');
       console.log(error);
+      setShowLogin(false);
     }
   }
   

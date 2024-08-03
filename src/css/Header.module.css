@@ -18,6 +18,11 @@
   text-decoration: underline;
 }
 
+.menu {
+  display: flex;
+  margin-right: 5em;
+}
+
 .title {
   display: flex;
   align-items: center;
