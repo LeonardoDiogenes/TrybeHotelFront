@@ -5,7 +5,7 @@ import UserContext from '../context/UserContext';
 import Button from '@mui/material/Button';
 
 function SignUpForm() {
-  const { setShowSignUp } = useContext(UserContext);
+  const { setShowSignUp, setShowLogin } = useContext(UserContext);
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -32,8 +32,9 @@ function SignUpForm() {
         return;
       }
       await signUp(formData.name, formData.email, formData.password);
-      setShowSignUp(false);
       alert('User created successfully');
+      setShowSignUp(false);
+      setShowLogin(true);
     } catch (error) {
       console.log(error);
     }

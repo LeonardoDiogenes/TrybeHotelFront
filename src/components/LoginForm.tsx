@@ -24,10 +24,10 @@ function LoginForm() {
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     try {
-      setUser(formData);
-      await login(formData.email, formData.password);
-      setShowLogin(false);
+      const data = await login(formData.email, formData.password);
+      setUser({ email: formData.email, password: formData.password, name: data.user.name });
       alert('Logged in successfully');
+      setShowLogin(false);
     } catch (error) {
       alert('Failed to log in');
       console.log(error);

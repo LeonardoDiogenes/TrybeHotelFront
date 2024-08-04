@@ -2,7 +2,7 @@ import { useContext } from 'react';
 import UserContext from '../context/UserContext';
 import styles from '../css/Header.module.css';
 import Button from '@mui/material/Button';
-import PersonIcon from '@mui/icons-material/Person';
+import UserMenu from './UserMenu';
 
 function Header() {
   const { setShowLogin, setShowSignUp, user } = useContext(UserContext);
@@ -36,30 +36,7 @@ function Header() {
         </ul>
       </nav>
       {user !== null ? (
-        <div className={styles.menu}>
-          <Button
-          component="label"
-          variant="contained"
-          startIcon={<PersonIcon
-          sx={{
-            width: '1.7em',
-            height: '2em',
-            color: 'black',
-            marginLeft: '0.5em',
-          }}/>}
-          sx={{
-            width: '7em',
-            height: '3em',
-            justifyContent: 'center',
-            borderRadius: '10px',
-            backgroundColor: '#4CAF50',
-            fontFamily: 'Montserrat',
-            color: 'black',
-            '&:hover': { backgroundColor: '#45a049', borderColor: '#0062cc' }
-          }}>
-
-          </Button>
-        </div>
+        <UserMenu />
       ) : (
         <div className={styles.buttons}>
           <Button

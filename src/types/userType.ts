@@ -2,6 +2,7 @@ export type UserContextType = {
   user: {
     email: string;
     password: string;
+    name: string;
   } | null;
   setUser: (user: any) => void;
   showLogin: boolean;

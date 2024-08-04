@@ -1,5 +1,11 @@
 interface LoginResponse {
   token: string;
+  user: {
+    userId: number;
+    name: string;
+    email: string;
+    userType: string;
+  };
 }
 
 export const login = async (email: string, password: string): Promise<LoginResponse> => {
