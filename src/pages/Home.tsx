@@ -8,20 +8,20 @@ import LoginForm from "../components/LoginForm";
 import styles from '../css/Home.module.css';
 import UserContext from '../context/UserContext';
 import SignUpForm from '../components/SignUpForm';
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { Hotel } from '../types/hotelType';
 
 
 function Home() {
-  const { showLogin, showSignUp } = useContext(UserContext);
-  const [hotels, setHotels] = useState<Hotel[]>([]);
+  const { showLogin, showSignUp, hotels, setHotels } = useContext(UserContext);
+  
 
   useEffect(() => {
     const fetchHotels = async () => {
       try {
         const response = await fetch('https://localhost:5001/hotel');
         if (response.ok) {
-          const data = await response.json();
+          const data: Hotel[] = await response.json();
           setHotels(data);
         }
       } catch (error) {
@@ -75,7 +75,7 @@ function Home() {
           >
             <>
               <Filters />
-              <Grid key="grid" hotels={hotels} />
+              <Grid key="grid" hotels={hotels || []} />
             </>
           </CSSTransition>
         )}

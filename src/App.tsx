@@ -9,14 +9,21 @@ function App() {
   const [user, setUser] = useState<UserContextType["user"]>(null);
   const [showLogin, setShowLogin] = useState(false);
   const [showSignUp, setShowSignUp] = useState(false);
+  const [hotels, setHotels] = useState<UserContextType["hotels"]>([]);
+  const [isFetching, setIsFetching] = useState(false);
 
   return (
-    <UserContext.Provider value={{user, setUser, showLogin, setShowLogin, showSignUp, setShowSignUp }}>
+    <UserContext.Provider value={{
+      user, setUser,
+      showLogin, setShowLogin,
+      showSignUp, setShowSignUp,
+      hotels, setHotels, isFetching, setIsFetching
+    }}>
       <div className={styles.rootcss}>
         <Routes>
-          <Route path="/" element={ <Home /> } />
+          <Route path="/" element={<Home />} />
         </Routes>
-      
+
       </div>
     </UserContext.Provider>
   )

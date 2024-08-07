@@ -1,7 +1,7 @@
 import styles from '../css/Card.module.css';
-import { Hotel } from '../types/hotelType';
+import { Hotel, HotelsByGeoResponse } from '../types/hotelType';
 
-const Card: React.FC<{ hotel: Hotel }> = ({ hotel }) => {
+const Card: React.FC<{ hotel: Hotel | HotelsByGeoResponse }> = ({ hotel }) => {
   return (
     <li className={styles.wrapper}>
       <img src={hotel.image} alt="Imagem do hotel" />

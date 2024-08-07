@@ -1,3 +1,5 @@
+import { HotelsByGeoResponse } from "../types/hotelType";
+
 interface LoginResponse {
   token: string;
   user: {
@@ -32,7 +34,7 @@ export const signUp = async (name: string, email: string, password: string): Pro
     headers: {
       'Content-Type': 'application/json',
     },
-    body: JSON.stringify({ name, email, password }),
+    body: JSON.stringify({ name, email, password })
     });
 
   if (response.status !== 201) {
@@ -42,3 +44,23 @@ export const signUp = async (name: string, email: string, password: string): Pro
   const data = await response.json();
   console.log(data);
 };
+
+export const getHotelsByGeoLocation = async (location: string): Promise<HotelsByGeoResponse[]> => {
+  const response = await fetch(`https://localhost:5001/geo/address`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({ address: location })
+  });
+
+  if (!response.ok) {
+    throw new Error('Falha ao buscar hotéis');
+  }
+
+  const data = await response.json();
+  console.log(data);
+  return data;
+};
+
+

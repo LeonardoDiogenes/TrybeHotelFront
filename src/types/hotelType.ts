@@ -1,10 +1,16 @@
-export interface Hotel {
+export interface HotelType {
   id: number;
   name: string;
   image: string;
   address: string;
   cityId: number;
   rooms: Room[];
+}
+
+export interface Hotel extends HotelType {};
+
+export interface HotelsByGeoResponse extends HotelType {
+  distance: number;
 }
 
 export interface Room {

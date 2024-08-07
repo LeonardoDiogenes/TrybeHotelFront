@@ -7,7 +7,9 @@
 
 .filters {
   display: flex;
+  flex-direction: column;
   justify-content: center;
+  align-items: center;
 }
 
 .wrapper {
@@ -45,11 +47,6 @@
 .filters input::placeholder {
   color: #888;
   font-style: italic;
-}
-
-.buttons {
-  background-color: #45a049;
-  color: black;
 }
 
 /* .filtersLabel button {
