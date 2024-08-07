@@ -17,6 +17,8 @@
   flex-direction: column;
   gap: 5vh;
   margin-bottom: 5em;
+  border-bottom: 1px solid #ccc;
+  padding-bottom: 3em;
 }
 
 .background {

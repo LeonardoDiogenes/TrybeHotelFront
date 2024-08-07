@@ -1,5 +1,5 @@
 import Button from '@mui/material/Button';
-import PersonIcon from '@mui/icons-material/Person';
+import MenuIcon from '@mui/icons-material/Menu';
 import styles from '../css/UserMenu.module.css';
 import { useContext, useState } from 'react';
 import UserContext from '../context/UserContext';
@@ -26,7 +26,7 @@ function UserMenu() {
           component="label"
           variant="contained"
           onClick={handleClick}
-          startIcon={<PersonIcon
+          startIcon={<MenuIcon
             sx={{
               width: '1.7em',
               height: '2em',

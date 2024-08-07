@@ -5,7 +5,7 @@ function LoadingCard() {
   return (
     <div className={styles.wrapper}>
       <CircularProgress />
-      <p>Loading...</p>
+      <p>Buscando...</p>
     </div>
   )
 }
