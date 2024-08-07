@@ -1,5 +1,5 @@
 import styles from '../css/Grid.module.css';
-import Card from './Card';
+import HotelCard from './Card';
 import { Hotel, HotelsByGeoResponse } from '../types/hotelType';
 
 const Grid: React.FC<{ hotels: (Hotel | HotelsByGeoResponse)[] }> = ({ hotels = [] }) => {
@@ -8,7 +8,7 @@ const Grid: React.FC<{ hotels: (Hotel | HotelsByGeoResponse)[] }> = ({ hotels = 
       <h1>Hotéis</h1>
       <ul className={styles.list}>
         {hotels.map((hotel, index) => (
-          <Card key={hotel.id || index} hotel={hotel} />
+          <HotelCard key={hotel.id || index} hotel={hotel} />
         ))}
       </ul>
     </div>
