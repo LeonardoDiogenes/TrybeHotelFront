@@ -3,9 +3,12 @@ import UserContext from '../context/UserContext';
 import styles from '../css/Header.module.css';
 import Button from '@mui/material/Button';
 import UserMenu from './UserMenu';
+import { useNavigate, useLocation } from 'react-router-dom';
 
 function Header() {
   const { setShowLogin, setShowSignUp, user } = useContext(UserContext);
+  const navigate = useNavigate();
+  const location = useLocation();
 
   const handleLoginClick = () => {
     setShowLogin(true);
@@ -20,6 +23,9 @@ function Header() {
   const handleHomeClick = () => {
     setShowLogin(false);
     setShowSignUp(false);
+    if (location.pathname !== '/') {
+      navigate('/');
+    }
   };
 
   return (

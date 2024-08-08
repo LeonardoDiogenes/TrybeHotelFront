@@ -3,10 +3,12 @@ import MenuIcon from '@mui/icons-material/Menu';
 import styles from '../css/UserMenu.module.css';
 import { useContext, useState } from 'react';
 import UserContext from '../context/UserContext';
+import { useNavigate } from 'react-router-dom';
 
 function UserMenu() {
   const { user, setUser } = useContext(UserContext);
   const [showMenu, setShowMenu] = useState(false);
+  const navigate = useNavigate();
 
   const handleClick = () => {
     setShowMenu(!showMenu);
@@ -15,6 +17,11 @@ function UserMenu() {
   const handleLogOut = () => {
     alert('Tem certeza que deseja sair?');
     setUser(null);
+    setShowMenu(false);
+  };
+
+  const handleProfileClick = () => {
+    navigate('/profile');
     setShowMenu(false);
   };
 
@@ -48,7 +55,7 @@ function UserMenu() {
           <div className={`${styles.menu} ${showMenu ? styles.menuOpen : ''}`}>
             <ul>
               <li>
-                <a href="#">Perfil</a>
+                <a href="#" onClick={handleProfileClick}>Perfil</a>
               </li>
               <li>
                 <a href="#">Configurações</a>

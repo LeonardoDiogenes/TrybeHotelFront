@@ -4,6 +4,7 @@ import Home from './pages/Home';
 import styles from './css/App.module.css';
 import UserContext from './context/UserContext';
 import { UserContextType } from './types/userType';
+import Profile from './pages/Profile';
 
 function App() {
   const [user, setUser] = useState<UserContextType["user"]>(null);
@@ -22,6 +23,7 @@ function App() {
       <div className={styles.rootcss}>
         <Routes>
           <Route path="/" element={<Home />} />
+          <Route path="/profile" element={<Profile />} />
         </Routes>
 
       </div>
