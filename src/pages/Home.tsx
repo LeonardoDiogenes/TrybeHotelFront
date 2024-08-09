@@ -7,9 +7,11 @@ import styles from '../css/Home.module.css';
 import UserContext from '../context/UserContext';
 import SignUpForm from '../components/SignUpForm';
 import Layout from '../components/Layout';
+import HotelContext from '../context/HotelContext';
 
 function Home() {
-  const { showLogin, showSignUp, hotels, setHotels } = useContext(UserContext);
+  const { showLogin, showSignUp } = useContext(UserContext);
+  const { hotels, setHotels } = useContext(HotelContext);
 
   useEffect(() => {
     const fetchHotels = async () => {

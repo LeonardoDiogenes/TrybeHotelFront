@@ -1,44 +1,13 @@
-import { ChangeEvent, useContext, useState } from 'react';
+import { useContext } from 'react';
 import styles from '../css/Filters.module.css';
 import Button from '@mui/material/Button';
-import { getHotelsByGeoLocation } from '../async/asyncFuncs'
 import UserContext from '../context/UserContext';
 import LoadingCard from './LoadingCard';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
+import FiltersForm from './FiltersForm';
 
 function Filters() {
-  const { setHotels, isFetching, setIsFetching } = useContext(UserContext);
-  const [formData, setFormData] = useState({
-    location: '',
-    checkin: '',
-    checkout: '',
-    guests: ''
-  });
-
-  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
-    const { name, value } = e.target;
-    if (name) {
-      setFormData((prevData) => ({
-        ...prevData,
-        [name]: value
-      }));
-    }
-  };
-
-  const handleSubmit = async (e: ChangeEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    try {
-      console.log('Dados do form:' + formData);
-      setIsFetching(true);
-      const hotels = await getHotelsByGeoLocation(formData.location);
-      console.log(hotels);
-      setHotels(hotels);
-      setIsFetching(false);
-    } catch (error) {
-      console.error('Error fetching hotels', error);
-    }
-  };
-
+  const { isFetching } = useContext(UserContext);
 
   return (
     <div className={styles.wrapper}>
@@ -94,64 +63,7 @@ function Filters() {
               exitActive: styles['fade-exit-active']
             }}
           >
-            <form className={styles.filters} onSubmit={handleSubmit}>
-              <div className={styles.background}>
-                <div className={styles.filter}>
-                  <label htmlFor="location">Localização:</label>
-                  <input
-                    type="text"
-                    name="location"
-                    id="location"
-                    onChange={handleChange}
-                    placeholder="Digite a localização"
-                  />
-                </div>
-                <div className={styles.filter}>
-                  <label htmlFor="checkin">Check-in:</label>
-                  <input
-                    type="text"
-                    name="checkin"
-                    id="checkin"
-                    onChange={handleChange}
-                    placeholder="Digite a data do check-in"
-                  />
-                </div>
-                <div className={styles.filter}>
-                  <label htmlFor="checkout">Check-out:</label>
-                  <input
-                    type="text"
-                    name="checkout"
-                    id="checkout"
-                    onChange={handleChange}
-                    placeholder="Digite a data do check-out"
-                  />
-                </div>
-                <div className={styles.filter}>
-                  <label htmlFor="guests">Quantidade de hóspedes:</label>
-                  <input
-                    type="text"
-                    name="guests"
-                    id="guests"
-                    onChange={handleChange}
-                    placeholder="Digite a quantidade de hóspedes"
-                  />
-                </div>
-              </div>
-              <Button
-                type='submit'
-                variant='contained'
-                sx={{
-                  marginTop: '2em',
-                  backgroundColor: '#4CAF50',
-                  fontFamily: 'Montserrat',
-                  fontWeight: 'bold',
-                  color: 'black',
-                  '&:hover': { backgroundColor: '#45a049', borderColor: '#0062cc' }
-                }}
-              >
-                Pesquisar
-              </Button>
-            </form>
+            <FiltersForm />
           </CSSTransition>
         )}
       </TransitionGroup>
@@ -161,3 +73,4 @@ function Filters() {
 }
 
 export default Filters;
+

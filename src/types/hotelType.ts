@@ -1,3 +1,5 @@
+import { Room } from "./roomType";
+
 export interface HotelType {
   id: number;
   name: string;
@@ -7,26 +9,17 @@ export interface HotelType {
   rooms: Room[];
 }
 
-export interface Hotel extends HotelType {};
+export interface Hotel extends HotelType { };
 
 export interface HotelsByGeoResponse extends HotelType {
   distance: number;
 }
 
-export interface Room {
-  id: number;
-  name: string;
-  capacity: number;
-  image: string;
-  hotelId: number;
-  bookings: Booking[];
-}
+export type FilterType = 'hotel' | 'room';
 
-export interface Booking {
-  id: number;
-  checkIn: string;
-  checkOut: string;
-  guestQuantity: number;
-  roomId: number;
-  userId: number;
-}
+export type HotelContextType = {
+  hotels: Hotel[] | HotelsByGeoResponse[];
+  setHotels: (hotels: any) => void;
+  filterType: FilterType;
+  setFilterType: (filterType: FilterType) => void;
+};
