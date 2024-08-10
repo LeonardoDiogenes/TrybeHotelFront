@@ -26,13 +26,12 @@ function App() {
       <HotelContext.Provider value={{
         hotels, setHotels, filterType, setFilterType
       }}>
-      <div className={styles.rootcss}>
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/profile" element={<Profile />} />
-        </Routes>
-
-      </div>
+        <div className={styles.rootcss}>
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/profile" element={<Profile />} />
+          </Routes>
+        </div>
       </HotelContext.Provider>
     </UserContext.Provider>
   )

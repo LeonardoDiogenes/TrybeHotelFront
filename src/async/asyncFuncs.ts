@@ -1,4 +1,5 @@
 import { HotelsByGeoResponse } from "../types/hotelType";
+import { RoomResponse } from "../types/roomType";
 
 interface LoginResponse {
   token: string;
@@ -62,5 +63,17 @@ export const getHotelsByGeoLocation = async (location: string): Promise<HotelsBy
   console.log(data);
   return data;
 };
+
+export const getAllRooms = async (): Promise<RoomResponse[]> => {
+  const response = await fetch('https://localhost:5001/room');
+
+  if (!response.ok) {
+    throw new Error('Falha ao buscar quartos');
+  }
+
+  const data = await response.json();
+  console.log(data);
+  return data;
+}
 
 

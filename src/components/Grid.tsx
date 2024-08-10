@@ -1,5 +1,5 @@
 import styles from '../css/Grid.module.css';
-import HotelCard from './Card';
+import HotelCard from './HotelCard';
 import { Hotel, HotelsByGeoResponse } from '../types/hotelType';
 
 const Grid: React.FC<{ hotels: (Hotel | HotelsByGeoResponse)[] }> = ({ hotels = [] }) => {

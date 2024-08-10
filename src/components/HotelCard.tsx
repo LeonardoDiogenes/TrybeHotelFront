@@ -24,21 +24,3 @@ const HotelCard: React.FC<{ hotel: Hotel | HotelsByGeoResponse }> = ({ hotel }) 
 export default HotelCard;
 
 
-// return (
-//   <li className={styles.wrapper}>
-//     <img src={hotel.image} alt="Imagem do hotel" />
-//     <h2>{hotel.name}</h2>
-//     <p>{hotel.address}</p>
-//   </li>
-// )
-
-// return (
-//   <Card>
-//     <CardContent className={styles.wrapper}>
-//     <img src={hotel.image} alt="Imagem do hotel" />
-//     <h2>{hotel.name}</h2>
-//     <p>{hotel.address}</p>
-//     </CardContent>
-//   </Card>
-// )
-

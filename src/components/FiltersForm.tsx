@@ -1,14 +1,14 @@
 import { ChangeEvent, useContext, useState } from 'react';
 import styles from '../css/FiltersForm.module.css';
 import UserContext from '../context/UserContext';
-import { getHotelsByGeoLocation } from '../async/asyncFuncs'
+import { getAllRooms, getHotelsByGeoLocation } from '../async/asyncFuncs'
 import HotelContext from '../context/HotelContext';
 import Button from '@mui/material/Button';
 
 function FiltersForm() {
 
   const { setIsFetching } = useContext(UserContext);
-  const { setHotels } = useContext(HotelContext);
+  const { setHotels, filterType } = useContext(HotelContext);
   
   const [formData, setFormData] = useState({
     location: '',
@@ -33,9 +33,15 @@ function FiltersForm() {
     try {
       console.log('Dados do form:' + formData);
       setIsFetching(true);
-      const hotels = await getHotelsByGeoLocation(formData.location);
-      console.log(hotels);
-      setHotels(hotels);
+      if (filterType === 'hotel') {
+        const hotels = await getHotelsByGeoLocation(formData.location);
+        console.log(hotels);
+        setHotels(hotels);
+      }
+      if (filterType === 'room') {
+        const rooms = await getAllRooms();
+        console.log(rooms);
+      }
       setIsFetching(false);
     } catch (error) {
       console.error('Error fetching hotels', error);

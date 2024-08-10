@@ -9,6 +9,16 @@ export interface HotelType {
   rooms: Room[];
 }
 
+export interface HotelResponse {
+  hotelId: number;
+  name: string;
+  image: string;
+  address: string;
+  cityId: number;
+  cityName: string;
+  state: string;
+}
+
 export interface Hotel extends HotelType { };
 
 export interface HotelsByGeoResponse extends HotelType {

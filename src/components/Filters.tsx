@@ -5,15 +5,24 @@ import UserContext from '../context/UserContext';
 import LoadingCard from './LoadingCard';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
 import FiltersForm from './FiltersForm';
+import HotelContext from '../context/HotelContext';
+import { FilterType } from '../types/hotelType';
 
 function Filters() {
   const { isFetching } = useContext(UserContext);
+  const { setFilterType } = useContext(HotelContext);
+
+  const handleFilter = (type: FilterType) => () => {
+    setFilterType(type);
+  };
+
 
   return (
     <div className={styles.wrapper}>
       <div className={styles.filtersLabel}>
         <h1>Encontrar</h1>
         <Button
+          onClick={handleFilter('hotel')}
           variant="contained"
           sx={{
             backgroundColor: '#4CAF50',
@@ -26,6 +35,7 @@ function Filters() {
           Hotéis
         </Button>
         <Button
+          onClick={handleFilter('room')}
           variant="contained"
           sx={{
             backgroundColor: '#4CAF50',
