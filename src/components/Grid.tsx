@@ -1,18 +1,29 @@
 import styles from '../css/Grid.module.css';
 import HotelCard from './HotelCard';
 import { Hotel, HotelsByGeoResponse } from '../types/hotelType';
+import { RoomResponse } from '../types/roomType';
 
-const Grid: React.FC<{ hotels: (Hotel | HotelsByGeoResponse)[] }> = ({ hotels = [] }) => {
+type GridProps = {
+  data: (Hotel | HotelsByGeoResponse | RoomResponse)[];
+};
+
+const Grid: React.FC<GridProps> = ({ data = [] }) => {
+  const isRoom = data.length > 0 && "roomId" in data[0];
+
   return (
     <div className={styles.wrapper}>
-      <h1>Hotéis</h1>
+      <h1>{isRoom ? 'Quartos' : 'Hotéis'}</h1>
       <ul className={styles.list}>
-        {hotels.map((hotel, index) => (
-          <HotelCard key={hotel.id || index} hotel={hotel} />
-        ))}
+        {data.map((item) => {
+          if ("hotelId" in item) {
+            return <HotelCard data={item as RoomResponse} />;
+          } else {
+            return <HotelCard data={item as Hotel | HotelsByGeoResponse} />;
+          }
+        })}
       </ul>
     </div>
-  )
+  );
 }
 
 export default Grid;

@@ -76,4 +76,16 @@ export const getAllRooms = async (): Promise<RoomResponse[]> => {
   return data;
 }
 
+export const getAllHotels = async (): Promise<HotelsByGeoResponse[]> => {
+  const response = await fetch('https://localhost:5001/hotel');
+
+  if (!response.ok) {
+    throw new Error('Falha ao buscar hotéis');
+  }
+
+  const data = await response.json();
+  console.log(data);
+  return data;
+};
+
 

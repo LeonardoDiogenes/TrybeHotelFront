@@ -4,6 +4,8 @@ import { HotelContextType } from "../types/hotelType";
 const HotelContext = createContext<HotelContextType>({
   hotels: [],
   setHotels: () => {},
+  rooms: [],
+  setRooms: () => {},
   filterType: 'hotel',
   setFilterType: () => {}
 });

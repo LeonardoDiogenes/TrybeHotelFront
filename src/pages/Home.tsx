@@ -11,7 +11,7 @@ import HotelContext from '../context/HotelContext';
 
 function Home() {
   const { showLogin, showSignUp } = useContext(UserContext);
-  const { hotels, setHotels } = useContext(HotelContext);
+  const { hotels, setHotels, rooms } = useContext(HotelContext);
 
   useEffect(() => {
     const fetchHotels = async () => {
@@ -72,7 +72,7 @@ function Home() {
             >
               <>
                 <Filters />
-                <Grid key="grid" hotels={hotels || []} />
+                <Grid key="grid" data={hotels.length > 0 ? hotels : rooms} />
               </>
             </CSSTransition>
           )}

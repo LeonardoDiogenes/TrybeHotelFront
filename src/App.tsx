@@ -5,16 +5,28 @@ import styles from './css/App.module.css';
 import UserContext from './context/UserContext';
 import { UserContextType } from './types/userType';
 import Profile from './pages/Profile';
-import { FilterType, HotelContextType } from './types/hotelType';
+import { FilterType, Hotel, HotelContextType, HotelsByGeoResponse } from './types/hotelType';
 import HotelContext from './context/HotelContext';
+import { RoomResponse } from './types/roomType';
 
 function App() {
   const [user, setUser] = useState<UserContextType["user"]>(null);
   const [showLogin, setShowLogin] = useState(false);
   const [showSignUp, setShowSignUp] = useState(false);
-  const [hotels, setHotels] = useState<HotelContextType["hotels"]>([]);
+  const [hotels, _setHotels] = useState<HotelContextType["hotels"]>([]);
   const [isFetching, setIsFetching] = useState(false);
   const [filterType, setFilterType] = useState<FilterType>('hotel');
+  const [rooms, _setRooms] = useState<HotelContextType["rooms"]>([]);
+
+  const setHotels = (hotels: Hotel[] | HotelsByGeoResponse[]) => {
+    _setHotels(hotels);
+    _setRooms([]);
+  };
+
+  const setRooms = (rooms: RoomResponse[]) => {
+    _setRooms(rooms);
+    _setHotels([]);
+  };
 
   return (
     <UserContext.Provider value={{
@@ -24,7 +36,8 @@ function App() {
       isFetching, setIsFetching
     }}>
       <HotelContext.Provider value={{
-        hotels, setHotels, filterType, setFilterType
+        hotels, setHotels, filterType, setFilterType,
+        rooms, setRooms
       }}>
         <div className={styles.rootcss}>
           <Routes>

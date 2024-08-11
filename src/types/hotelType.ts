@@ -1,4 +1,4 @@
-import { Room } from "./roomType";
+import { Room, RoomResponse } from "./roomType";
 
 export interface HotelType {
   id: number;
@@ -19,6 +19,10 @@ export interface HotelResponse {
   state: string;
 }
 
+export interface HotelProps {
+  data: Hotel | HotelsByGeoResponse;
+}
+
 export interface Hotel extends HotelType { };
 
 export interface HotelsByGeoResponse extends HotelType {
@@ -30,6 +34,8 @@ export type FilterType = 'hotel' | 'room';
 export type HotelContextType = {
   hotels: Hotel[] | HotelsByGeoResponse[];
   setHotels: (hotels: any) => void;
+  rooms: RoomResponse[];
+  setRooms: (rooms: RoomResponse[]) => void;
   filterType: FilterType;
   setFilterType: (filterType: FilterType) => void;
 };
