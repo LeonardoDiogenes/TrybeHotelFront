@@ -47,7 +47,7 @@ export const signUp = async (name: string, email: string, password: string): Pro
 };
 
 export const getHotelsByGeoLocation = async (location: string): Promise<HotelsByGeoResponse[]> => {
-  const response = await fetch(`https://localhost:5001/geo/address`, {
+  const response = await fetch(`https://localhost:5001/geo/hotel/address`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -81,6 +81,24 @@ export const getAllHotels = async (): Promise<HotelsByGeoResponse[]> => {
 
   if (!response.ok) {
     throw new Error('Falha ao buscar hotéis');
+  }
+
+  const data = await response.json();
+  console.log(data);
+  return data;
+};
+
+export const getRoomsByLocation = async (location: string): Promise<RoomResponse[]> => {
+  const response = await fetch(`https://localhost:5001/geo/room/address`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({ address: location })
+  });
+
+  if (!response.ok) {
+    throw new Error('Falha ao buscar quartos');
   }
 
   const data = await response.json();

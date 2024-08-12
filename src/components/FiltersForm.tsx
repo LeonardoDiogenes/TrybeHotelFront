@@ -1,7 +1,7 @@
 import { ChangeEvent, useContext, useState } from 'react';
 import styles from '../css/FiltersForm.module.css';
 import UserContext from '../context/UserContext';
-import { getAllHotels, getAllRooms, getHotelsByGeoLocation } from '../async/asyncFuncs'
+import { getAllHotels, getAllRooms, getHotelsByGeoLocation, getRoomsByLocation } from '../async/asyncFuncs'
 import HotelContext from '../context/HotelContext';
 import Button from '@mui/material/Button';
 
@@ -9,15 +9,15 @@ function FiltersForm() {
 
   const { setIsFetching } = useContext(UserContext);
   const { setHotels, filterType, setRooms } = useContext(HotelContext);
-  
+
   const [formData, setFormData] = useState({
     location: '',
     checkin: '',
     checkout: '',
     guests: ''
   });
-  
-  
+
+
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
     if (name) {
@@ -39,20 +39,24 @@ function FiltersForm() {
           setHotels(hotels);
         } else {
           const hotels = await getAllHotels();
-          console.log(hotels);
           setHotels(hotels);
         }
       }
       if (filterType === 'room') {
-        const rooms = await getAllRooms();
-        setRooms(rooms);
+        if (formData.location) {
+          const rooms = await getRoomsByLocation(formData.location);
+          setRooms(rooms);
+        } else {
+          const rooms = await getAllRooms();
+          setRooms(rooms);
+        }
       }
       setIsFetching(false);
     } catch (error) {
       console.error('Error fetching hotels', error);
     }
   };
-  
+
   return (
     <form className={styles.filters} onSubmit={handleSubmit}>
       <div className={styles.background}>
