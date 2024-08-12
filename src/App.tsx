@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import Home from './pages/Home';
+import HotelRoom from './pages/HotelRoom';
 import styles from './css/App.module.css';
 import UserContext from './context/UserContext';
 import { UserContextType } from './types/userType';
@@ -43,6 +44,7 @@ function App() {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/profile" element={<Profile />} />
+            <Route path="/hotelroom" element={<HotelRoom />}></Route>
           </Routes>
         </div>
       </HotelContext.Provider>

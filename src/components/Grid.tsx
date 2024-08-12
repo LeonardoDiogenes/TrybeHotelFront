@@ -1,5 +1,5 @@
 import styles from '../css/Grid.module.css';
-import HotelCard from './HotelCard';
+import HotelRoomCard from './HotelRoomCard';
 import { Hotel, HotelsByGeoResponse } from '../types/hotelType';
 import { RoomResponse } from '../types/roomType';
 
@@ -16,9 +16,9 @@ const Grid: React.FC<GridProps> = ({ data = [] }) => {
       <ul className={styles.list}>
         {data.map((item) => {
           if ("hotelId" in item) {
-            return <HotelCard data={item as RoomResponse} />;
+            return <HotelRoomCard data={item as RoomResponse} />;
           } else {
-            return <HotelCard data={item as Hotel | HotelsByGeoResponse} />;
+            return <HotelRoomCard data={item as Hotel | HotelsByGeoResponse} />;
           }
         })}
       </ul>
