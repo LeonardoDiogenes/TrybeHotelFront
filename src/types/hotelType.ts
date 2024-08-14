@@ -3,7 +3,7 @@ import { Room, RoomResponse } from "./roomType";
 export interface HotelType {
   id: number;
   name: string;
-  image: string;
+  image: string[];
   address: string;
   cityId: number;
   rooms: Room[];
@@ -12,7 +12,7 @@ export interface HotelType {
 export interface HotelResponse {
   hotelId: number;
   name: string;
-  image: string;
+  image: string[];
   address: string;
   cityId: number;
   cityName: string;
