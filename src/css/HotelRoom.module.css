@@ -1,9 +1,25 @@
 .wrapper {
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  align-items: center;
+  gap: 2em;
+  padding: 0.5em;
+  background: linear-gradient(to bottom right, #f0f0f0, #d9d9d9);
+  border-radius: 15px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+  margin-bottom: 30em;
 }
 
-.wrapper img {
-  width: 30%;
+.wrapper h1 {
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: #2e492f;
+  margin-bottom: 1em;
+  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.grid {
+  display: flex;
+  justify-content: center;
+  max-width: 100wh;
 }

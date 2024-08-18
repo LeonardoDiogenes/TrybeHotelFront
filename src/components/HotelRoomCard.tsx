@@ -26,7 +26,7 @@ const HotelRoomCard: React.FC<Props> = ({ data }) => {
       }}>
       <img src={data.image[0]} alt="Imagem do hotel" />
       <h2>{data.name}</h2>
-      <p>{'address' in data ? data.address : data.hotel.address}</p>
+      <p>{'address' in data ? data.address : data.hotel.name}</p>
       <CardActions>
         <Button
           onClick={handleClick}

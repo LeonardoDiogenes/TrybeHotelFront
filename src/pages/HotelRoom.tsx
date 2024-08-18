@@ -3,6 +3,7 @@ import Layout from "../components/Layout";
 import { Hotel } from "../types/hotelType";
 import { RoomResponse } from "../types/roomType";
 import styles from "../css/HotelRoom.module.css";
+import ImageGrid from "../components/ImageGrid";
 
 
 function HotelRoom() {
@@ -13,8 +14,8 @@ function HotelRoom() {
     <Layout>
       <div className={styles.wrapper}>
         <h1>{data.name}</h1>
-        <div>
-          <img src={data.image} alt="" />
+        <div className={styles.grid}>
+          <ImageGrid key="grid" data={data} />
         </div>
       </div>
     </Layout>

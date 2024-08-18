@@ -15,7 +15,9 @@
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(20%, 1fr));
   gap: 1em;
-  width: 100%;
+  width: 100vw;
+  height: 50vh;
+  margin-left: 3em;
 }
 
 
