@@ -20,12 +20,12 @@ export interface HotelResponse {
 }
 
 export interface HotelProps {
-  data: Hotel | HotelsByGeoResponse;
+  data: HotelResponse | HotelsByGeoResponse;
 }
 
 export interface Hotel extends HotelType { };
 
-export interface HotelsByGeoResponse extends HotelType {
+export interface HotelsByGeoResponse extends HotelResponse {
   distance: number;
 }
 

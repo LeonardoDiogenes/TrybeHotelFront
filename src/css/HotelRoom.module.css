@@ -1,3 +1,9 @@
+.pagewrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 .wrapper {
   display: flex;
   flex-direction: column;
@@ -10,12 +16,14 @@
   margin-bottom: 30em;
 }
 
-.wrapper h1 {
+.title {
   font-size: 2.5rem;
   font-weight: bold;
   color: #2e492f;
   margin-bottom: 1em;
-  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+  display: flex;
+  justify-content: center;
+  /* text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2); */
 }
 
 .grid {

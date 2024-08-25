@@ -1,4 +1,4 @@
-import { HotelsByGeoResponse } from "../types/hotelType";
+import { HotelResponse, HotelsByGeoResponse } from "../types/hotelType";
 import { RoomResponse } from "../types/roomType";
 
 interface LoginResponse {
@@ -76,7 +76,7 @@ export const getAllRooms = async (): Promise<RoomResponse[]> => {
   return data;
 }
 
-export const getAllHotels = async (): Promise<HotelsByGeoResponse[]> => {
+export const getAllHotels = async (): Promise<HotelResponse[]> => {
   const response = await fetch('https://localhost:5001/hotel');
 
   if (!response.ok) {

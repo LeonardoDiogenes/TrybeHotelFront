@@ -1,10 +1,10 @@
 import ImageList from '@mui/material/ImageList';
 import ImageListItem from '@mui/material/ImageListItem';
-import { Hotel } from '../types/hotelType';
+import { HotelResponse } from '../types/hotelType';
 import { RoomResponse } from '../types/roomType';
 
 type Props = {
-  data: Hotel | RoomResponse;
+  data: HotelResponse | RoomResponse;
 }
 
 const ImageGrid: React.FC<Props> = ({ data }) => {
@@ -19,8 +19,7 @@ const ImageGrid: React.FC<Props> = ({ data }) => {
         key={index}
         sx={{
           ":hover": {
-            transform: 'scale(1.05)',
-            filter: 'brightness(1.1)',
+            filter: 'brightness(1.1)'
             
           }
         }}>

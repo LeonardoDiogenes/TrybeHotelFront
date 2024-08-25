@@ -1,10 +1,10 @@
 import styles from '../css/Grid.module.css';
 import HotelRoomCard from './HotelRoomCard';
-import { Hotel, HotelsByGeoResponse } from '../types/hotelType';
+import { Hotel, HotelResponse, HotelsByGeoResponse } from '../types/hotelType';
 import { RoomResponse } from '../types/roomType';
 
 type GridProps = {
-  data: (Hotel | HotelsByGeoResponse | RoomResponse)[];
+  data: (HotelResponse | HotelsByGeoResponse | RoomResponse)[];
 };
 
 const Grid: React.FC<GridProps> = ({ data = [] }) => {
@@ -16,9 +16,9 @@ const Grid: React.FC<GridProps> = ({ data = [] }) => {
       <ul className={styles.list}>
         {data.map((item) => {
           if ("hotelId" in item) {
-            return <HotelRoomCard data={item as RoomResponse} />;
+            return <HotelRoomCard data={item as unknown as RoomResponse} />;
           } else {
-            return <HotelRoomCard data={item as Hotel | HotelsByGeoResponse} />;
+            return <HotelRoomCard data={item as unknown as HotelResponse | HotelsByGeoResponse} />;
           }
         })}
       </ul>
