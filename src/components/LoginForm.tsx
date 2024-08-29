@@ -5,7 +5,7 @@ import { login } from '../async/asyncFuncs'
 import Button from '@mui/material/Button';
 
 function LoginForm() {
-  const { setUser, setShowLogin } = useContext(UserContext);
+  const { setUser, setShowLogin, user } = useContext(UserContext);
   const [formData, setFormData] = useState({
     email: '',
     password: ''
@@ -25,7 +25,7 @@ function LoginForm() {
     e.preventDefault();
     try {
       const data = await login(formData.email, formData.password);
-      setUser({ email: formData.email, password: formData.password, name: data.user.name });
+      setUser({ email: formData.email, password: formData.password, name: data.user.name, token: data.token });
       alert('Logged in successfully');
       setShowLogin(false);
     } catch (error) {

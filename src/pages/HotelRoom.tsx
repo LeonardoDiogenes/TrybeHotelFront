@@ -6,11 +6,42 @@ import styles from "../css/HotelRoom.module.css";
 import ImageGrid from "../components/ImageGrid";
 import RoomList from "../components/RoomList";
 import Button from '@mui/material/Button';
+import { useContext, useState } from "react";
+import BookingForm from "../components/BookingForm";
+import HotelContext from "../context/HotelContext";
+import { addBooking } from "../async/asyncFuncs";
+import UserContext from "../context/UserContext";
+import { BookingDtoInsert } from "../types/bookingType";
 
 
 function HotelRoom() {
   const location = useLocation();
   const { data } = location.state as { data: HotelResponse | RoomResponse };
+  const [isBooking, setIsBooking] = useState<boolean>(false);
+  const { bookingData } = useContext(HotelContext);
+  const { user } = useContext(UserContext);
+
+
+  const handleBookingButton = () => {
+    if (isBooking) {
+      let bookingInsert = {} as BookingDtoInsert;
+      if ('roomId' in data) {
+        bookingInsert = {
+          checkIn: bookingData.checkIn,
+          checkOut: bookingData.checkOut,
+          guestQuantity: bookingData.guestQuantity,
+          roomId: data.roomId,
+        }
+      }
+      try {
+        addBooking(bookingInsert, user!.token);
+      } catch (error) {
+        console.log(error);
+      }
+    }
+    setIsBooking(!isBooking);
+
+  }
 
   return (
     <Layout>
@@ -34,25 +65,50 @@ function HotelRoom() {
           </div>
         </div>
         {'address' in data ? (
-          <RoomList />
+          <div className={styles.roomlist}>
+            <RoomList hotelId={data.hotelId}/>
+          </div>
         ) : (
-          <Button
-            type='submit'
-            variant='contained'
-            sx={{
-              marginTop: '2em',
-              backgroundColor: 'transparent',
-              fontFamily: 'Montserrat',
-              fontWeight: 'bold',
-              color: 'black',
-              '&:hover': { backgroundColor: '#45a049', borderColor: '#0062cc' }
-            }}
-          >
-            Agendar
-          </Button>
-        )
-
-        }
+          isBooking ? (
+            <div className={styles.bookingFormWrapper}>
+              <BookingForm />
+              <Button
+                onClick={handleBookingButton}
+                type='submit'
+                variant='contained'
+                sx={{
+                  alignSelf: 'center',
+                  marginTop: '2em',
+                  backgroundColor: 'transparent',
+                  fontFamily: 'Montserrat',
+                  fontWeight: 'bold',
+                  color: 'black',
+                  '&:hover': { backgroundColor: '#45a049', borderColor: '#0062cc' }
+                }}
+              >
+                Agendar
+              </Button>
+            </div>
+          ) : (
+            <div className={styles.bookingButton}>
+              <Button
+                onClick={handleBookingButton}
+                type='submit'
+                variant='contained'
+                sx={{
+                  marginTop: '2em',
+                  backgroundColor: 'transparent',
+                  fontFamily: 'Montserrat',
+                  fontWeight: 'bold',
+                  color: 'black',
+                  '&:hover': { backgroundColor: '#45a049', borderColor: '#0062cc' }
+                }}
+              >
+                Agendar
+              </Button>
+            </div>
+          )
+        )}
       </div>
     </Layout>
   )

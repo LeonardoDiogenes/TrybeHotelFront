@@ -1,6 +1,6 @@
 import styles from '../css/Grid.module.css';
 import HotelRoomCard from './HotelRoomCard';
-import { Hotel, HotelResponse, HotelsByGeoResponse } from '../types/hotelType';
+import { HotelResponse, HotelsByGeoResponse } from '../types/hotelType';
 import { RoomResponse } from '../types/roomType';
 
 type GridProps = {

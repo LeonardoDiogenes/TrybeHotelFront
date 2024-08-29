@@ -73,7 +73,7 @@ function FiltersForm() {
         <div className={styles.filter}>
           <label htmlFor="checkin">Check-in:</label>
           <input
-            type="text"
+            type="date"
             name="checkin"
             id="checkin"
             onChange={handleChange}
@@ -83,7 +83,7 @@ function FiltersForm() {
         <div className={styles.filter}>
           <label htmlFor="checkout">Check-out:</label>
           <input
-            type="text"
+            type="date"
             name="checkout"
             id="checkout"
             onChange={handleChange}
@@ -93,7 +93,7 @@ function FiltersForm() {
         <div className={styles.filter}>
           <label htmlFor="guests">Quantidade de hóspedes:</label>
           <input
-            type="text"
+            type="number"
             name="guests"
             id="guests"
             onChange={handleChange}

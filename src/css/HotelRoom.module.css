@@ -31,3 +31,20 @@
   justify-content: center;
   max-width: 100wh;
 }
+
+.roomlist {
+  position: relative;
+  top: -25em;
+}
+
+.bookingButton {
+  position: relative;
+  top: -25em;
+}
+
+.bookingFormWrapper {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  top: -25em;
+}

@@ -18,6 +18,11 @@ function App() {
   const [isFetching, setIsFetching] = useState(false);
   const [filterType, setFilterType] = useState<FilterType>('hotel');
   const [rooms, _setRooms] = useState<HotelContextType["rooms"]>([]);
+  const [bookingData, setBookingData] = useState({
+    checkIn: "",
+    checkOut: "",
+    guestQuantity: 0
+  });
 
   const setHotels = (hotels: Hotel[] | HotelsByGeoResponse[]) => {
     _setHotels(hotels);
@@ -38,7 +43,7 @@ function App() {
     }}>
       <HotelContext.Provider value={{
         hotels, setHotels, filterType, setFilterType,
-        rooms, setRooms
+        rooms, setRooms, bookingData, setBookingData
       }}>
         <div className={styles.rootcss}>
           <Routes>

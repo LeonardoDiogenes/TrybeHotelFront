@@ -1,3 +1,4 @@
+import { BookingFormData } from "./bookingType";
 import { Room, RoomResponse } from "./roomType";
 
 export interface HotelType {
@@ -38,4 +39,6 @@ export type HotelContextType = {
   setRooms: (rooms: RoomResponse[]) => void;
   filterType: FilterType;
   setFilterType: (filterType: FilterType) => void;
+  bookingData: BookingFormData,
+  setBookingData: (bookingData: BookingFormData) => void;
 };

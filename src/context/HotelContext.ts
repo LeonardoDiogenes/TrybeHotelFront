@@ -7,7 +7,13 @@ const HotelContext = createContext<HotelContextType>({
   rooms: [],
   setRooms: () => {},
   filterType: 'hotel',
-  setFilterType: () => {}
+  setFilterType: () => {},
+  bookingData: {
+    checkIn: "",
+    checkOut: "",
+    guestQuantity: 0,
+  },
+  setBookingData: () => {}
 });
 
 export default HotelContext;

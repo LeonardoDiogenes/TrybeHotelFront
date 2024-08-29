@@ -1,3 +1,4 @@
+import { BookingDtoInsert } from "../types/bookingType";
 import { HotelResponse, HotelsByGeoResponse } from "../types/hotelType";
 import { RoomResponse } from "../types/roomType";
 
@@ -104,6 +105,36 @@ export const getRoomsByLocation = async (location: string): Promise<RoomResponse
   const data = await response.json();
   console.log(data);
   return data;
+};
+
+export const getRoomsByHotel = async (hotelId: number): Promise<RoomResponse[]> => {
+  const response = await fetch(`https://localhost:5001/room/${hotelId}`);
+
+  if (!response.ok) {
+    throw new Error('Falha ao buscar quartos');
+  }
+
+  const data = await response.json();
+  console.log(data);
+  return data;
+}
+
+export const addBooking = async (booking: BookingDtoInsert, token: string): Promise<void> => {
+  const response = await fetch('https://localhost:5001/booking', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${token}`
+    },
+    body: JSON.stringify(booking)
+  });
+
+  if (response.status !== 201) {
+    throw new Error('Falha ao agendar');
+  }
+
+  const data = await response.json();
+  console.log(data);
 };
 
 
