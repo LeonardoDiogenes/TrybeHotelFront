@@ -1,0 +1,22 @@
+.card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1em;
+  padding: 0.5em;
+  background: rgba(76, 175, 80, 0.8);
+  border-radius: 15px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+}
+
+.card p {
+  font-size: 1.5em;
+  font-weight: bold; 
+  color: black; 
+  margin: 0; 
+}
+
+/* .test {
+  background-color: rgba(24, 121, 24, 0.8);
+  color: rgba(76, 175, 80, 0.8);
+} */

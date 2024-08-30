@@ -37,14 +37,26 @@
   top: -25em;
 }
 
-.bookingButton {
+/* .bookingButton {
   position: relative;
   top: -25em;
-}
+} */
 
 .bookingFormWrapper {
   display: flex;
   flex-direction: column;
+  align-items: center;
+  /* position: relative;
+  top: -25em; */
+}
+
+.bottomGrid {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.roomInfo {
   position: relative;
   top: -25em;
 }

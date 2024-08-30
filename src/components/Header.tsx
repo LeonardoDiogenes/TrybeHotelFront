@@ -11,11 +11,13 @@ function Header() {
   const location = useLocation();
 
   const handleLoginClick = () => {
+    navigate('/');
     setShowLogin(true);
     setShowSignUp(false);
   };
 
   const handleSignUpClick = () => {
+    navigate('/');
     setShowSignUp(true);
     setShowLogin(false);
   };

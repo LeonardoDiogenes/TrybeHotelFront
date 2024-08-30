@@ -12,7 +12,7 @@ import HotelContext from "../context/HotelContext";
 import { addBooking } from "../async/asyncFuncs";
 import UserContext from "../context/UserContext";
 import { BookingDtoInsert } from "../types/bookingType";
-
+import RoomInfo from "../components/RoomInfo";
 
 function HotelRoom() {
   const location = useLocation();
@@ -20,7 +20,6 @@ function HotelRoom() {
   const [isBooking, setIsBooking] = useState<boolean>(false);
   const { bookingData } = useContext(HotelContext);
   const { user } = useContext(UserContext);
-
 
   const handleBookingButton = () => {
     if (isBooking) {
@@ -31,7 +30,7 @@ function HotelRoom() {
           checkOut: bookingData.checkOut,
           guestQuantity: bookingData.guestQuantity,
           roomId: data.roomId,
-        }
+        };
       }
       try {
         addBooking(bookingInsert, user!.token);
@@ -40,8 +39,7 @@ function HotelRoom() {
       }
     }
     setIsBooking(!isBooking);
-
-  }
+  };
 
   return (
     <Layout>
@@ -66,52 +64,38 @@ function HotelRoom() {
         </div>
         {'address' in data ? (
           <div className={styles.roomlist}>
-            <RoomList hotelId={data.hotelId}/>
+            <RoomList hotelId={data.hotelId} />
           </div>
         ) : (
-          isBooking ? (
-            <div className={styles.bookingFormWrapper}>
-              <BookingForm />
-              <Button
-                onClick={handleBookingButton}
-                type='submit'
-                variant='contained'
-                sx={{
-                  alignSelf: 'center',
-                  marginTop: '2em',
-                  backgroundColor: 'transparent',
-                  fontFamily: 'Montserrat',
-                  fontWeight: 'bold',
-                  color: 'black',
-                  '&:hover': { backgroundColor: '#45a049', borderColor: '#0062cc' }
-                }}
-              >
-                Agendar
-              </Button>
+          <div className={styles.bottomGrid}>
+            <div className={styles.roomInfo}>
+              <RoomInfo key="roomInfo" data={data} />
             </div>
-          ) : (
-            <div className={styles.bookingButton}>
-              <Button
-                onClick={handleBookingButton}
-                type='submit'
-                variant='contained'
-                sx={{
-                  marginTop: '2em',
-                  backgroundColor: 'transparent',
-                  fontFamily: 'Montserrat',
-                  fontWeight: 'bold',
-                  color: 'black',
-                  '&:hover': { backgroundColor: '#45a049', borderColor: '#0062cc' }
-                }}
-              >
-                Agendar
-              </Button>
+            <div className={isBooking ? styles.bookingFormWrapper : styles.bookingButton}>
+              {isBooking && <BookingForm />}
+              {user && (
+                <Button
+                  onClick={handleBookingButton}
+                  type='submit'
+                  variant='contained'
+                  sx={{
+                    marginTop: '2em',
+                    backgroundColor: 'transparent',
+                    fontFamily: 'Montserrat',
+                    fontWeight: 'bold',
+                    color: 'black',
+                    '&:hover': { backgroundColor: '#45a049', borderColor: '#0062cc' }
+                  }}
+                >
+                  Agendar
+                </Button>
+              )}
             </div>
-          )
+          </div>
         )}
       </div>
     </Layout>
-  )
+  );
 }
 
 export default HotelRoom;

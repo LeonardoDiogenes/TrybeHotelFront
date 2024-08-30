@@ -18,6 +18,7 @@ function UserMenu() {
     alert('Tem certeza que deseja sair?');
     setUser(null);
     setShowMenu(false);
+    navigate('/');
   };
 
   const handleProfileClick = () => {
