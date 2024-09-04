@@ -5,6 +5,8 @@ export interface Room {
   id: number;
   name: string;
   capacity: number;
+  kingSizeBeds: number;
+  singleSizeBeds: number;
   image: string[];
   hotelId: number;
   bookings: Booking[];
@@ -14,6 +16,8 @@ export interface RoomResponse {
   roomId: number;
   name: string;
   capacity: number;
+  kingSizeBeds: number;
+  singleSizeBeds: number;
   image: string[];
   hotel: HotelResponse;
 }

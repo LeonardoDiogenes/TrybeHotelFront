@@ -1,0 +1,48 @@
+.bookingsContainer {
+  padding: 20px;
+}
+
+.tabs {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.tabButton {
+  padding: 10px 20px;
+  border: none;
+  background-color: #f1f1f1;
+  cursor: pointer;
+}
+
+/* .bookingsList {
+  display: flex;
+  flex-direction: column;
+} */
+
+.bookingCard {
+  display: flex;
+  justify-content: space-between;
+  padding: 4em;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  background-color: #d1d0d0;
+}
+
+.bookingInfo {
+  display: flex;
+  gap: 2em;
+}
+
+.cancelButton {
+  padding: 10px;
+  background-color: #f1f1f1;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: background-color 0.3s;
+}
+
+.cancelButton:hover {
+  background-color: #e1e1e1;
+}

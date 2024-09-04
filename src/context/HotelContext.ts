@@ -11,7 +11,7 @@ const HotelContext = createContext<HotelContextType>({
   bookingData: {
     checkIn: "",
     checkOut: "",
-    guestQuantity: 0,
+    guestQuant: 0,
   },
   setBookingData: () => {}
 });

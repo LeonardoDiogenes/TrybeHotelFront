@@ -21,7 +21,7 @@ function App() {
   const [bookingData, setBookingData] = useState({
     checkIn: "",
     checkOut: "",
-    guestQuantity: 0
+    guestQuant: 0
   });
 
   const setHotels = (hotels: Hotel[] | HotelsByGeoResponse[]) => {

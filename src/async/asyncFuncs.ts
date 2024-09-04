@@ -1,4 +1,4 @@
-import { BookingDtoInsert } from "../types/bookingType";
+import { BookingDtoInsert, BookingResponse } from "../types/bookingType";
 import { HotelResponse, HotelsByGeoResponse } from "../types/hotelType";
 import { RoomResponse } from "../types/roomType";
 
@@ -136,5 +136,21 @@ export const addBooking = async (booking: BookingDtoInsert, token: string): Prom
   const data = await response.json();
   console.log(data);
 };
+
+export const getBookingsByUser = async (token: string): Promise<BookingResponse[]> => {
+  const response = await fetch(`https://localhost:5001/booking/`, {
+    headers: {
+      'Authorization': `Bearer ${token}`
+    }
+  });
+
+  if (!response.ok) {
+    throw new Error('Falha ao buscar reservas');
+  }
+
+  const data = await response.json();
+  console.log(data);
+  return data;
+}
 
 

@@ -4,6 +4,5 @@
 }
 
 .bookings {
-  margin-right: auto;
-  margin-left: auto;
+  margin: 0 auto;
 }

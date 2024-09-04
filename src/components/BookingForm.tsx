@@ -39,11 +39,11 @@ function BookingForm() {
           />
         </div>
         <div className={styles.filter}>
-          <label htmlFor="guestQuantity">Quantidade de hóspedes:</label>
+          <label htmlFor="guestQuant">Quantidade de hóspedes:</label>
           <input
             type="number"
-            name="guestQuantity"
-            id="guestQuantity"
+            name="guestQuant"
+            id="guestQuant"
             onChange={handleChange}
             placeholder="Digite a quantidade de hóspedes"
           />

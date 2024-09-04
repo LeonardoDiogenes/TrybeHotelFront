@@ -28,11 +28,12 @@ function HotelRoom() {
         bookingInsert = {
           checkIn: bookingData.checkIn,
           checkOut: bookingData.checkOut,
-          guestQuantity: bookingData.guestQuantity,
+          guestQuant: bookingData.guestQuant,
           roomId: data.roomId,
         };
       }
       try {
+        console.log(bookingInsert);
         addBooking(bookingInsert, user!.token);
       } catch (error) {
         console.log(error);
@@ -45,18 +46,19 @@ function HotelRoom() {
     <Layout>
       <div className={styles.pagewrapper}>
         <h1 className={styles.title}>{data.name}</h1>
-        {'address' in data ? (
-          <>
-            <h3>{`${data.cityName}, ${data.state}`}</h3>
-            <h4>{`${data.address}`}</h4>
-          </>
-        ) : (
-          <>
-            <h3>{data.hotel.name}</h3>
-            <h4>{`${data.hotel.cityName}, ${data.hotel.state}`}</h4>
-          </>
-        )}
-
+        <div className={styles.subTitle}>
+          {'address' in data ? (
+            <>
+              <h3>{`${data.cityName}, ${data.state}`}</h3>
+              <h4>{`${data.address}`}</h4>
+            </>
+          ) : (
+            <>
+              <h3>{data.hotel.name}</h3>
+              <h4>{`${data.hotel.cityName}, ${data.hotel.state}`}</h4>
+            </>
+          )}
+        </div>
         <div className={styles.wrapper}>
           <div className={styles.grid}>
             <ImageGrid key="grid" data={data} />
@@ -73,7 +75,7 @@ function HotelRoom() {
             </div>
             <div className={isBooking ? styles.bookingFormWrapper : styles.bookingButton}>
               {isBooking && <BookingForm />}
-              {user && (
+              {user ? (
                 <Button
                   onClick={handleBookingButton}
                   type='submit'
@@ -89,6 +91,8 @@ function HotelRoom() {
                 >
                   Agendar
                 </Button>
+              ) : (
+                <h2>Você precisa estar logado para agendar um quarto.</h2>
               )}
             </div>
           </div>
