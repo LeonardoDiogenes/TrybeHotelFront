@@ -35,6 +35,7 @@ function HotelRoom() {
       try {
         console.log(bookingInsert);
         addBooking(bookingInsert, user!.token);
+        alert('Reserva realizada com sucesso!');
       } catch (error) {
         console.log(error);
       }

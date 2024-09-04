@@ -1,24 +1,28 @@
 .bookingsContainer {
-  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+  align-items: center;
 }
 
 .tabs {
   display: flex;
-  gap: 10px;
-  margin-bottom: 20px;
+  gap: 2em;
+  margin-bottom: 2em;
 }
 
 .tabButton {
-  padding: 10px 20px;
+  padding: 1em 2em;
   border: none;
   background-color: #f1f1f1;
   cursor: pointer;
+  border-radius: 7px;
 }
 
-/* .bookingsList {
-  display: flex;
-  flex-direction: column;
-} */
+.tabButton.active {
+  background-color: #4CAF50;
+  font-weight: bold;
+}
 
 .bookingCard {
   display: flex;
@@ -31,18 +35,35 @@
 
 .bookingInfo {
   display: flex;
-  gap: 2em;
+  gap: 3em;
+  align-items: center;
+  justify-content: center;
 }
 
 .cancelButton {
-  padding: 10px;
   background-color: #f1f1f1;
   border: none;
   cursor: pointer;
-  border-radius: 5px;
+  border-radius: 7px;
   transition: background-color 0.3s;
+  margin-left: 2em;
+  padding: 1em 2em;
+  font-size: 0.9em;
 }
 
 .cancelButton:hover {
   background-color: #e1e1e1;
+}
+
+.hotelRoom {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.6em;
+}
+
+.checkInAndOut {
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
 }

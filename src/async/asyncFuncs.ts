@@ -37,7 +37,7 @@ export const signUp = async (name: string, email: string, password: string): Pro
       'Content-Type': 'application/json',
     },
     body: JSON.stringify({ name, email, password })
-    });
+  });
 
   if (response.status !== 201) {
     throw new Error('Falha no cadastro');
@@ -151,6 +151,21 @@ export const getBookingsByUser = async (token: string): Promise<BookingResponse[
   const data = await response.json();
   console.log(data);
   return data;
+}
+
+export const deleteBooking = async (bookingId: number, token: string): Promise<string> => {
+  const response = await fetch(`https://localhost:5001/booking/${bookingId}`, {
+    method: 'DELETE',
+    headers: {
+      'Authorization': `Bearer ${token}`
+    }
+  });
+
+  if (response.status !== 204) {
+    throw new Error('Falha ao cancelar reserva');
+  } else {
+    return 'Reserva cancelada com sucesso';
+  }
 }
 
 
